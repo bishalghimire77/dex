@@ -10,6 +10,15 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+    app: {
+    baseURL: '/dex/'
+  },
+    ssr: false,
+
+  nitro: {
+    preset: 'github_pages'
+  },
+
   css: ['~/assets/css/main.css'],
 
   routeRules: {
