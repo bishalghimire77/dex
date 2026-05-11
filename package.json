@@ -1,0 +1,32 @@
+{
+  "name": "dex",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.105",
+    "@iconify-json/simple-icons": "^1.2.80",
+    "@lucide/vue": "^1.14.0",
+    "@nuxt/ui": "^4.7.1",
+    "chart.js": "^4.5.1",
+    "lucide-vue-next": "^1.0.0",
+    "nuxt": "^4.4.2",
+    "tailwindcss": "^4.2.4",
+    "viem": "^2.48.11",
+    "vue-chartjs": "^5.3.3"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "eslint": "^10.3.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.2.7"
+  },
+  "packageManager": "pnpm@10.33.2"
+}
