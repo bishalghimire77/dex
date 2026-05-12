@@ -252,7 +252,7 @@ const coins = [
             New digs on VVS
           </div>
 
-          <div class="text-white/50 max-w-[280px] text-right">
+          <div class="text-white/50 text-sm max-w-[280px] text-right">
             Discover new listed tokens, and never miss any opportunities
           </div>
 
