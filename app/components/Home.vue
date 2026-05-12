@@ -582,11 +582,11 @@ const coins = [
 
             <div class="relative z-10">
 
-              <div class="text-2xl font-black">
+              <div class="text-xl font-black">
                 Cronos
               </div>
 
-              <div class="mt-4 text-xl font-bold">
+              <div class="mt-4 text-md font-bold">
                 Your Gateway to Cronos
               </div>
 
