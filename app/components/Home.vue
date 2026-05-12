@@ -125,8 +125,8 @@ const coins = [
 
         <div
           class="
-            text-[72px]
-            md:text-[110px]
+            text-4xl
+            md:text-8xl
             font-black
             leading-[0.95]
             tracking-[-4px]
@@ -144,7 +144,7 @@ const coins = [
           class="
             mt-6
             text-white/70
-            text-[18px]
+            text-sm
             max-w-[620px]
           "
         >
@@ -154,15 +154,15 @@ const coins = [
         <button
           class="
             mt-10
-            h-[56px]
+            py-2
             px-7
-            rounded-2xl
+            rounded-xl
             border
             border-white/20
             bg-white/5
             hover:bg-white/10
             transition-all
-            text-[17px]
+            text-sm
             font-bold
           "
         >
@@ -188,7 +188,7 @@ const coins = [
       <!-- ACTION BAR -->
       <div
         class="
-          rounded-[28px]
+          rounded-xl
           border
           border-white/5
           bg-[#161f2d]/80
@@ -206,11 +206,11 @@ const coins = [
 
         <div>
 
-          <div class="text-[46px] font-black">
+          <div class="text-4xl font-black">
             Tap. Swap. Earn.
           </div>
 
-          <div class="text-white/60 mt-1 text-[16px]">
+          <div class="text-white/60 mt-1 text-sm">
             Jump right in, everything you need
           </div>
 
@@ -221,22 +221,22 @@ const coins = [
 
           <div class="flex items-center gap-2">
             <div class="w-11 h-11 rounded-xl bg-cyan-400/20"></div>
-            <span class="text-[15px] font-semibold">Swap</span>
+            <span class="text-sm font-semibold">Swap</span>
           </div>
 
           <div class="flex items-center gap-2">
             <div class="w-11 h-11 rounded-xl bg-cyan-400/20"></div>
-            <span class="text-[15px] font-semibold">Bridge</span>
+            <span class="text-sm font-semibold">Bridge</span>
           </div>
 
           <div class="flex items-center gap-2">
             <div class="w-11 h-11 rounded-xl bg-cyan-400/20"></div>
-            <span class="text-[15px] font-semibold">Add Liquidity</span>
+            <span class="text-sm font-semibold">Add Liquidity</span>
           </div>
 
           <div class="flex items-center gap-2">
             <div class="w-11 h-11 rounded-xl bg-cyan-400/20"></div>
-            <span class="text-[15px] font-semibold">Claim</span>
+            <span class="text-sm font-semibold">Claim</span>
           </div>
 
         </div>
@@ -248,7 +248,7 @@ const coins = [
 
         <div class="flex items-center justify-between mb-6">
 
-          <div class="text-[34px] font-black">
+          <div class="text-2xl font-black">
             New digs on VVS
           </div>
 
@@ -352,11 +352,11 @@ const coins = [
 
           <div class="flex items-center justify-between">
 
-            <div class="text-[34px] font-black">
+            <div class="text-2xl font-black">
               Earn by Tokens
             </div>
 
-            <div class="text-white/40">
+            <div class="text-white/40 text-sm">
               Swap, stake in simple clicks
             </div>
 
@@ -425,11 +425,11 @@ const coins = [
 
           <div class="flex items-center justify-between">
 
-            <div class="text-[34px] font-black">
+            <div class="text-2xl font-black">
               Trending
             </div>
 
-            <div class="text-white/40">
+            <div class="text-white/40 text-sm">
               What's moving ATM?
             </div>
 
@@ -541,7 +541,7 @@ const coins = [
       <!-- EXPLORE -->
       <div class="mt-16">
 
-        <div class="text-[34px] font-black mb-8">
+        <div class="text-2xl font-black mb-8">
           Explore Cronos
         </div>
 
@@ -582,15 +582,15 @@ const coins = [
 
             <div class="relative z-10">
 
-              <div class="text-[36px] font-black">
+              <div class="text-2xl font-black">
                 Cronos
               </div>
 
-              <div class="mt-4 text-[24px] font-bold">
+              <div class="mt-4 text-xl font-bold">
                 Your Gateway to Cronos
               </div>
 
-              <div class="mt-6 text-white/70">
+              <div class="mt-6 text-white/70 text-sm">
                 Verify your wallet, bridge assets, and discover top dApps.
               </div>
 
@@ -605,7 +605,7 @@ const coins = [
     </section>
 
     <!-- FOOTER HERO -->
-    <section
+    <!-- <section
       class="
         relative
         z-10
@@ -686,7 +686,7 @@ const coins = [
 
       </div>
 
-    </section>
+    </section> -->
 
   </div>
 </template>

@@ -395,7 +395,7 @@ const filteredPools = computed(() => {
 
           <div>
             <span
-              class="px-5 py-2 rounded-full border border-white/20 text-sm"
+              class="px-2 py-1 rounded-full border border-white/20 text-xs"
             >
               {{ item.version }}
             </span>

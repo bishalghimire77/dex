@@ -26,22 +26,22 @@ defineProps({
           class="w-6 h-6 rounded-full bg-cyan-500"
         />
 
-        <span class="font-medium">
+        <span class="text-sm">
           {{ title }}
         </span>
       </div>
 
-      <span class="text-cyan-400 text-lg">↗</span>
+      <span class="text-cyan-400 text-md">↗</span>
     </div>
 
     <!-- Price -->
-    <div class="mt-2 text-lg font-medium">
+    <div class="mt-2 text-sm">
       {{ price }}
     </div>
 
     <!-- Change -->
     <div
-      class="text-sm"
+      class="text-xs"
       :class="change?.includes('-') ? 'text-red-400' : 'text-green-400'"
     >
       {{ change }}

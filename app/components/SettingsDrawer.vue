@@ -15,7 +15,7 @@ const selectedGas = ref("Auto By Wallet");
   <div class="h-full bg-[#121528] text-white p-6">
     <!-- HEADER -->
     <div class="flex justify-between items-center mb-8">
-      <h2 class="text-xl font-light">Settings</h2>
+      <h2 class="text-md font-light">Settings</h2>
 
       <button class="text-3xl text-gray-300 hover:text-white">×</button>
     </div>
@@ -23,7 +23,7 @@ const selectedGas = ref("Auto By Wallet");
     <!-- THEME -->
     <div class="flex justify-between items-center mb-8">
       <div>
-        <div class="text-md font-semibold">Theme</div>
+        <div class="text-sm font-semibold">Theme</div>
       </div>
 
       <USwitch
@@ -38,19 +38,19 @@ const selectedGas = ref("Auto By Wallet");
     <!-- EXPERT MODE -->
     <div class="flex justify-between items-start mb-8">
       <div>
-        <div class="text-md font-semibold">Expert Mode</div>
+        <div class="text-sm font-semibold">Expert Mode</div>
 
         <div class="text-gray-400 text-xs mt-1 max-w-[240px]">
           Expert Mode skips confirmations, with higher slippage risk
         </div>
       </div>
 
-      <USwitch v-model="expertMode" size="md" />
+      <USwitch v-model="expertMode" size="sm" />
     </div>
 
     <!-- TRANSACTION DEADLINE -->
     <div class="flex justify-between items-center mb-6">
-      <div class="text-md font-semibold max-w-[200px] leading-tight">
+      <div class="text-sm font-semibold max-w-[200px] leading-tight">
         Transaction deadline
       </div>
 
@@ -59,17 +59,17 @@ const selectedGas = ref("Auto By Wallet");
           value="12"
           class="w-24"
           :ui="{
-            base: 'bg-[#1b2035] border-white/10 text-center text-xl',
+            base: 'bg-[#1b2035] border-white/10 text-center text-md',
           }"
         />
 
-        <span class="text-gray-300 text-sm"> Minutes </span>
+        <span class="text-gray-300 text-xs"> Minutes </span>
       </div>
     </div>
 
     <!-- GAS -->
     <div class="flex justify-between items-start mb-8">
-      <div class="text-md font-semibold max-w-[230px] leading-tight">
+      <div class="text-sm font-semibold max-w-[230px] leading-tight">
         Default Transaction Speed (GWEI)
       </div>
 
@@ -78,7 +78,7 @@ const selectedGas = ref("Auto By Wallet");
         :items="gasOptions"
         class="w-52"
         :ui="{
-          base: 'bg-[#2a3047] border-none',
+          base: 'bg-[#2a3047] border-none text-xs',
         }"
       />
     </div>
@@ -89,7 +89,7 @@ const selectedGas = ref("Auto By Wallet");
     <!-- SWAP SLIPPAGE -->
     <div class="mb-8">
       <div class="flex items-center gap-2 mb-4">
-        <span class="text-md text-gray-300"> Swap Slippage Tolerance </span>
+        <span class="text-sm font-semibold text-gray-300"> Swap Slippage Tolerance </span>
 
         <span class="text-gray-500"> ⓘ </span>
       </div>
@@ -99,7 +99,7 @@ const selectedGas = ref("Auto By Wallet");
     v-for="option in swapOptions"
     :key="option"
     @click="swapSlippage = option"
-    class="flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+    class="flex-1 py-1 rounded-md text-xs font-semibold transition-all duration-200"
     :class="
       swapSlippage === option
         ? 'bg-cyan-400 text-black'
@@ -114,7 +114,7 @@ const selectedGas = ref("Auto By Wallet");
     <!-- LIQUIDITY SLIPPAGE -->
     <div>
       <div class="flex items-center gap-2 mb-4">
-        <span class="text-md text-gray-300">
+        <span class="text-sm font-semibold text-gray-300">
           Liquidity Slippage Tolerance
         </span>
 
@@ -126,7 +126,7 @@ const selectedGas = ref("Auto By Wallet");
     v-for="option in liquidityOptions"
     :key="option"
     @click="liquiditySlippage = option"
-    class="flex-1 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+    class="flex-1 py-1 rounded-md text-xs font-semibold transition-all duration-200"
     :class="
       liquiditySlippage === option
         ? 'bg-cyan-400 text-black'

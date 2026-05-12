@@ -158,11 +158,11 @@ const swap = async () => {
     <!-- HISTORY -->
     <div class="mt-6">
       <div class="flex justify-between items-center mb-2">
-        <span class="text-lg font-semibold">History</span>
-        <span class="text-gray-400">Current Token</span>
+        <span class="text-sm font-semibold">History</span>
+        <span class="text-gray-400 text-sm">Current Token</span>
       </div>
 
-      <div class="bg-[#0b1220] p-4 rounded-xl text-center text-gray-500">
+      <div class="bg-[#0b1220] p-4 rounded-xl text-center text-gray-500 text-sm">
         No trade yet, start trading now!
       </div>
     </div>
