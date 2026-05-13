@@ -328,7 +328,7 @@ const filteredPools = computed(() => {
 
       <!-- MAIN -->
       <div
-        class="grid grid-cols-[2fr_1fr_1fr_1fr_80px] items-center px-4 py-8 hover:bg-white/[0.02] transition cursor-pointer"
+        class="grid grid-cols-[2fr_1fr_1fr_1fr_80px] items-center px-4 py-4 hover:bg-white/[0.02] transition cursor-pointer"
         @click="expandedPool = expandedPool === pool.id ? null : pool.id"
       >
 
@@ -375,7 +375,7 @@ const filteredPools = computed(() => {
         </div>
 
         <!-- ARROW -->
-        <div class="text-right text-5xl text-white/90">
+        <div class="text-right text-2xl text-white/90">
           ›
         </div>
       </div>

@@ -77,29 +77,128 @@ export const usePools = () => {
           }
         ]
       },
+            {
+        id: 2,
+        slug: 'wcro-xtc',
 
-      {
-        id: 3,
-        slug: 'v3s-$XTC',
-
-        name: 'V3S-$XTC',
+        name: 'WCRO-$XTC',
         type: 'liquidity',
 
         icons: [
-          'https://cryptologos.cc/logos/uniswap-uni-logo.png',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s',
           'https://inoai.org/wp-content/uploads/2025/05/transparent-logo.png'
         ],
 
-        apr: '36.94%',
-        tvl: '$2,147.16',
+        apr: '54.66%',
+        tvl: '$6,322.34',
         volume: '$0.00',
-        pools: 2,
+        pools: 4,
 
-        category: 'Stable',
-        token: 'VVS',
+        category: 'V2',
+        token: 'WCRO',
 
-        items: []
-      }
+        items: [
+          {
+            version: 'V3 · 1%',
+            tvl: '$400.00',
+            volume: '$10.00',
+            apr: '20.12%',
+            slug: 'wcro-v3s-v3-1'
+          }
+        ]
+      },
+            {
+        id: 2,
+        slug: 'wcro-xtc',
+
+        name: 'WCRO-$XTC',
+        type: 'liquidity',
+
+        icons: [
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s',
+          'https://inoai.org/wp-content/uploads/2025/05/transparent-logo.png'
+        ],
+
+        apr: '54.66%',
+        tvl: '$6,322.34',
+        volume: '$0.00',
+        pools: 4,
+
+        category: 'V2',
+        token: 'WCRO',
+
+        items: [
+          {
+            version: 'V3 · 1%',
+            tvl: '$400.00',
+            volume: '$10.00',
+            apr: '20.12%',
+            slug: 'wcro-v3s-v3-1'
+          }
+        ]
+      },
+            {
+        id: 2,
+        slug: 'wcro-xtc',
+
+        name: 'WCRO-$XTC',
+        type: 'liquidity',
+
+        icons: [
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s',
+          'https://inoai.org/wp-content/uploads/2025/05/transparent-logo.png'
+        ],
+
+        apr: '54.66%',
+        tvl: '$6,322.34',
+        volume: '$0.00',
+        pools: 4,
+
+        category: 'V2',
+        token: 'WCRO',
+
+        items: [
+          {
+            version: 'V3 · 1%',
+            tvl: '$400.00',
+            volume: '$10.00',
+            apr: '20.12%',
+            slug: 'wcro-v3s-v3-1'
+          }
+        ]
+      },
+            {
+        id: 2,
+        slug: 'wcro-xtc',
+
+        name: 'WCRO-$XTC',
+        type: 'liquidity',
+
+        icons: [
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s',
+          'https://inoai.org/wp-content/uploads/2025/05/transparent-logo.png'
+        ],
+
+        apr: '54.66%',
+        tvl: '$6,322.34',
+        volume: '$0.00',
+        pools: 4,
+
+        category: 'V2',
+        token: 'WCRO',
+
+        items: [
+          {
+            version: 'V3 · 1%',
+            tvl: '$400.00',
+            volume: '$10.00',
+            apr: '20.12%',
+            slug: 'wcro-v3s-v3-1'
+          }
+        ]
+      },
+
+
     ]
   }
 }
