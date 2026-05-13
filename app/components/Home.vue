@@ -65,38 +65,42 @@ const coins = [
   },
 ];
 
-const earnTokens = [
-  {
-    name: "LION",
-    apr: "315.08%",
-    type: "liquidity",
-    icon: "https://cryptologos.cc/logos/crypto-com-coin-cro-logo.png?v=040",
-  },
-  {
-    name: "V3S",
-    apr: "315.08%",
-    type: "liquidity",
-    icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=040",
-  },
-  {
-    name: "WCRO",
-    apr: "198.50%",
-    type: "liquidity",
-    icon: "https://cryptologos.cc/logos/cronos-cro-logo.png?v=040",
-  },
-  {
-    name: "VIES",
-    apr: "198.50%",
-    type: "liquidity",
-    icon: "https://cryptologos.cc/logos/vechain-vet-logo.png?v=040",
-  },
-  {
-    name: "xVVS",
-    apr: "3.87%",
-    type: "stake",
-    icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040",
-  },
-];
+// const earnTokens = [
+//   {
+//     name: "LION",
+//     apr: "315.08%",
+//     type: "liquidity",
+//     icon: "https://cryptologos.cc/logos/crypto-com-coin-cro-logo.png?v=040",
+//   },
+//   {
+//     name: "V3S",
+//     apr: "315.08%",
+//     type: "liquidity",
+//     icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=040",
+//   },
+//   {
+//     name: "WCRO",
+//     apr: "198.50%",
+//     type: "liquidity",
+//     icon: "https://cryptologos.cc/logos/cronos-cro-logo.png?v=040",
+//   },
+//   {
+//     name: "VIES",
+//     apr: "198.50%",
+//     type: "liquidity",
+//     icon: "https://cryptologos.cc/logos/vechain-vet-logo.png?v=040",
+//   },
+//   {
+//     name: "xVVS",
+//     apr: "3.87%",
+//     type: "stake",
+//     icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040",
+//   },
+// ];
+
+const { pools } = usePools();
+
+const earnTokens = pools;
 
 const trendingFilters = [
   "All",
@@ -302,7 +306,7 @@ const trending = [
                       coin.change
                     }}</span>
                   </div>
-                                    <div
+                  <div
                     class="text-white/40 text-[13px] flex items-center gap-1"
                   >
                     <span>M Cap</span>
@@ -355,44 +359,51 @@ const trending = [
 
           <!-- TOKEN LIST -->
           <div class="relative z-10 mt-10 space-y-6">
-            <div
+            <NuxtLink
+              :to="`/pools/${token.items?.[0]?.slug}`"
               v-for="token in earnTokens"
               :key="token.name"
-              class="relative cursor-pointer overflow-hidden rounded-[28px] border border-white/10 bg-[#111827]/70 px-7 py-4 flex items-center justify-between transition-all hover:border-cyan-400/30 hover:bg-[#131d2c]"
             >
-              <!-- LEFT -->
-              <div class="flex items-center gap-4">
-                <!-- ICON -->
-                <div
-                  class="w-[28px] h-[28px] rounded-full overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center shrink-0"
-                >
-                  <img :src="token.icon" class="w-full h-full object-cover" />
-                </div>
-
-                <!-- TEXT -->
-                <div>
-                  <div class="text-md font-black tracking-[-1px]">
-                    {{ token.name }}
-                  </div>
-
-                  <div class="mt-2 text-[#00e68a] text-xs font-extrabold">
-                    Up to {{ token.apr }} APR
-                  </div>
-                </div>
-              </div>
-
-              <!-- TAG -->
               <div
-                :class="
-                  token.type === 'stake'
-                    ? 'bg-pink-200 text-black'
-                    : 'bg-cyan-200 text-black'
-                "
-                class="absolute top-0 right-0 py-1 px-3 rounded-bl-[16px] flex items-center justify-center text-[10px] font-black capitalize"
+                class="relative cursor-pointer overflow-hidden rounded-[28px] border border-white/10 bg-[#111827]/70 px-7 py-4 flex items-center justify-between transition-all hover:border-cyan-400/30 hover:bg-[#131d2c] mb-2"
               >
-                {{ token.type }}
+                <!-- LEFT -->
+                <div class="flex items-center gap-4">
+                  <!-- ICON -->
+                  <div
+                    class="w-[28px] h-[28px] rounded-full overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center shrink-0"
+                  >
+                    <img
+                      :src="token.icons[0]"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <!-- TEXT -->
+                  <div>
+                    <div class="text-md font-black tracking-[-1px]">
+                      {{ token.name }}
+                    </div>
+
+                    <div class="mt-2 text-[#00e68a] text-xs font-extrabold">
+                      Up to {{ token.apr }} APR
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TAG -->
+                <div
+                  :class="
+                    token.type === 'stake'
+                      ? 'bg-pink-200 text-black'
+                      : 'bg-cyan-200 text-black'
+                  "
+                  class="absolute top-0 right-0 py-1 px-3 rounded-bl-[16px] flex items-center justify-center text-[10px] font-black capitalize"
+                >
+                  {{ token.type }}
+                </div>
               </div>
-            </div>
+            </NuxtLink>
           </div>
         </div>
 

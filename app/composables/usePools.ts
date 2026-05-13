@@ -4,7 +4,7 @@ export const usePools = () => {
       {
         id: 1,
         slug: 'wcro-vies',
-
+        type: 'liquidity',
         name: 'WCRO-VIES',
 
         icons: [
@@ -52,6 +52,7 @@ export const usePools = () => {
         slug: 'wcro-xtc',
 
         name: 'WCRO-$XTC',
+        type: 'liquidity',
 
         icons: [
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s',
@@ -82,6 +83,7 @@ export const usePools = () => {
         slug: 'v3s-$XTC',
 
         name: 'V3S-$XTC',
+        type: 'liquidity',
 
         icons: [
           'https://cryptologos.cc/logos/uniswap-uni-logo.png',
