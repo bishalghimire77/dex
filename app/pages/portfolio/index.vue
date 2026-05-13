@@ -208,7 +208,7 @@ onMounted(() => {
 
             <div class="agent-sub text-xs">You don’t have an Agent Wallet</div>
 
-            <button class="primary-btn rounded-xl px-4 py-2 text-sm">
+            <button class="primary-btn rounded-xl px-4 py-2 text-xs">
               Connect Agent Wallet
             </button>
           </div>
@@ -222,7 +222,7 @@ onMounted(() => {
               once and VVS does the rest:
             </div>
 
-            <div class="info-links text-md">
+            <div class="info-links text-sm">
               <div>• Smart Recurring →</div>
 
               <div class="text-md">
@@ -346,14 +346,14 @@ onMounted(() => {
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff8a8a, #ffb36a, #38e8ff);
 }
 
 .wallet {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 700;
   color: #f2f6ff;
 }
@@ -405,7 +405,7 @@ onMounted(() => {
   position: relative;
   padding-bottom: 16px;
   color: rgba(255, 255, 255, 0.55);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 600;
   background: none;
   border: none;
@@ -470,7 +470,7 @@ onMounted(() => {
 
 .wallet-balance {
   margin-top: 2px;
-  font-size: 2rem;
+  font-size: 28px;
   line-height: 1;
   font-weight: 700;
 }
@@ -520,7 +520,7 @@ onMounted(() => {
   padding-bottom: 12px;
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -559,12 +559,12 @@ onMounted(() => {
 }
 
 .asset-name {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .asset-value {
-  font-size: 20px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.45);
   font-weight: 700;
 }
@@ -702,7 +702,8 @@ onMounted(() => {
 }
 
 .filter {
-  height: 38px;
+  font-size: 10px;
+  height: 28px;
   min-width: 52px;
   border: none;
   border-radius: 10px;

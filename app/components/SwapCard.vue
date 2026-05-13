@@ -2,6 +2,8 @@
 import { isAmountEntered } from '~/utils/helper'
 const {isConnected} = useWallet();
 const toast = useToast();
+const selectedToken = useState("selectedToken", () => null);
+
 
 
 const openSetting = ref(false);
@@ -11,14 +13,16 @@ const buyAmount = computed(() => sellAmount.value * 2);
 
 const activeField = ref("sell"); // 'sell' or 'buy'
 
-const sellToken = ref({
-  name: "PAWSFLOW",
-  icon: null,
-});
+const sellToken = ref(
+  selectedToken.value || {
+    name: "PAWSFLOW",
+    icon: null,
+  }
+)
 
 const buyToken = ref({
   name: "CRO",
-  icon: null,
+  icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s",
 });
 
 const swap = async () => {
@@ -34,6 +38,10 @@ const swap = async () => {
     color: "success"
   })
 }
+
+onMounted(() => {
+
+})
 
 </script>
 

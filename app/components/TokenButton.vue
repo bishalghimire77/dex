@@ -6,7 +6,7 @@ defineProps({
 
 <template>
   <button
-    class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-xl hover:bg-white/10"
+    class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-xl hover:bg-white/10 w-[50%] cursor-pointer transition-colors"
   >
     <img
       v-if="token?.icon"

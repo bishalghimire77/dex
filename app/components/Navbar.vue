@@ -18,7 +18,7 @@ const menu = [{
 {
   label: 'Earn',
   // icon: 'i-simple-icons-github',
-  to: '/swap'
+  to: '/liquidity'
 },
 {
   label: 'Portfolio',
