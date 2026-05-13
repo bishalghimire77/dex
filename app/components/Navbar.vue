@@ -7,7 +7,7 @@ import { formatAddress } from "~/utils/helper";
 
 
 
-const {getWalletClient, address, onAccountsChanged, fetchAddress} = useWallet()
+const {getWalletClient, address, onAccountsChanged, fetchAddress, connectWallet} = useWallet()
 
 const mobileMenu = ref(false);
 const menu = [{
@@ -129,22 +129,65 @@ onMounted(async () => {
       <!-- RIGHT -->
       <div class="flex items-center gap-3">
         <!-- WALLET -->
-        <button
-          class="hidden sm:flex items-center gap-3 h-[42px] px-4 rounded-[14px] border border-white/5 bg-[#0f1725] hover:bg-[#121d2d] transition-all"
-        >
-          <!-- TOKEN -->
-          <div
-            class="w-6 h-6 rounded-full bg-[#172338] border border-white/10 flex items-center justify-center"
-          >
-            <div
-              class="w-3 h-3 rotate-45 border border-cyan-400 rounded-[2px]"
-            ></div>
-          </div>
+<button
+  @click="!isConnected && connectWallet()"
+  class="
+    hidden
+    sm:flex
+    items-center
+    gap-3
+    h-[42px]
+    px-4
+    rounded-[14px]
+    border
+    border-white/5
+    bg-[#0f1725]
+    hover:bg-[#121d2d]
+    transition-all
+    cursor-pointer
+  "
+>
+  <!-- TOKEN -->
+  <div
+    class="
+      w-6
+      h-6
+      rounded-full
+      bg-[#172338]
+      border
+      border-white/10
+      flex
+      items-center
+      justify-center
+    "
+  >
+    <div
+      class="
+        w-3
+        h-3
+        rotate-45
+        border
+        border-cyan-400
+        rounded-[2px]
+      "
+    ></div>
+  </div>
 
-          <span class="text-sm font-bold tracking-wide text-white">
-            {{ formatAddress(address) }}
-          </span>
-        </button>
+  <span
+    class="
+      text-sm
+      font-bold
+      tracking-wide
+      text-white
+    "
+  >
+    {{
+      isConnected
+        ? formatAddress(address)
+        : 'Connect Wallet'
+    }}
+  </span>
+</button>
 
 
         <!-- MOBILE BUTTON -->

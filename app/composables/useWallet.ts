@@ -14,6 +14,38 @@ import { cronos } from 'viem/chains'
 
 export const useWallet = () => {
 
+  const connectWallet = async () => {
+
+  if (!process.client) return
+
+  try {
+
+    const walletClient = getWalletClient()
+
+    const addresses =
+      await walletClient.requestAddresses()
+
+    if (addresses.length === 0) {
+      throw new Error('No accounts found')
+    }
+
+    address.value = addresses[0]
+    isConnected.value = true
+
+    const blc =
+      await getPublicClient().getBalance({
+        address: addresses[0] as `0x${string}`
+      })
+
+    balance.value = formatEther(blc)
+
+  } catch (err) {
+
+    console.log(err)
+
+  }
+}
+
   const address = useState<Address | undefined>(
     'wallet-address',
     () => undefined
@@ -130,6 +162,7 @@ export const useWallet = () => {
     onAccountsChanged,
     fetchAddress,
     isConnected,
-    balance
+    balance, 
+    connectWallet
   }
 }
