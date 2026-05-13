@@ -7,7 +7,7 @@ import { formatAddress } from "~/utils/helper";
 
 
 
-const {getWalletClient, address, onAccountsChanged, fetchAddress, connectWallet} = useWallet()
+const {getWalletClient, address, onAccountsChanged, fetchAddress, connectWallet, isConnected} = useWallet()
 
 const mobileMenu = ref(false);
 const menu = [{
