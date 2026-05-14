@@ -402,7 +402,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen text-white px-14 py-8">
+  <div class="min-h-screen text-white md:px-14 py-8">
     <!-- HEADER -->
     <div class="flex items-center gap-4 mb-10">
       <button class="text-xl opacity-80 hover:opacity-100">‹</button>
@@ -414,7 +414,7 @@ onMounted(() => {
       <TokenDrawer v-model:open="openTokenDrawer" @select="selectSingleToken" />
     </div>
 
-    <div class="grid grid-cols-[1fr_430px] gap-10 items-start">
+    <div class="flex flex-col md:flex-row gap-16">
       <!-- LEFT -->
       <div class="space-y-6">
         <!-- ================= STEP 1 ================= -->
@@ -423,11 +423,11 @@ onMounted(() => {
           class="rounded-[28px] border border-white/15 bg-[#0d1325]/95 overflow-hidden"
         >
           <!-- ACTIVE -->
-          <div v-if="step === 1" class="p-7">
-            <h2 class="text-xl font-bold mb-6">Select pair</h2>
+          <div v-if="step === 1" class="p-8 ">
+            <h2 class="text-xl font-bold mb-6 mx-4 p-2">Select pair</h2>
 
             <!-- SELECTED PAIR -->
-            <div class="bg-[#2a3044] rounded-3xl p-5 mb-6">
+            <div class="bg-[#2a3044] rounded-3xl p-5 mb-6 mx-4">
               <div class="grid grid-cols-[1fr_60px_1fr] gap-4">
                 <!-- TOKEN 0 -->
                 <div
@@ -514,7 +514,7 @@ onMounted(() => {
             <div
               class="h-16 rounded-sm border border-white/10 bg-[#111629] px-5 flex items-center justify-between mb-5"
             >
-              <span class="text-gray-400"> Token symbol or address </span>
+              <span class="text-gray-400 text-sm"> Token symbol or address </span>
 
               <span class="text-2xl">⌕</span>
             </div>
@@ -532,7 +532,7 @@ onMounted(() => {
                   class="w-8 h-8 rounded-full mx-auto mb-3"
                 />
 
-                <div class="text-md font-bold">
+                <div class="text-sm font-bold">
                   {{ item.symbol }}
                 </div>
 
@@ -543,7 +543,7 @@ onMounted(() => {
             </div>
 
             <!-- TABS -->
-            <div class="flex gap-6 text-md mb-5">
+            <div class="flex gap-6 text-sm mb-5">
               <span class="font-bold">All</span>
               <span class="text-gray-400">Trending</span>
               <span class="text-gray-400">Holdings</span>
@@ -714,7 +714,7 @@ onMounted(() => {
               The % you will earn for providing liquidity
             </div>
 
-            <div class="grid grid-cols-3 gap-5 mb-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-5 mb-8">
               <div
                 v-for="fee in feeTiers"
                 :key="fee.id"
@@ -876,7 +876,7 @@ onMounted(() => {
             </div>
 
             <!-- RANGE OPTIONS -->
-            <div class="grid grid-cols-4 gap-5 mb-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
               <button
                 v-for="range in rangeOptions"
                 :key="range.id"
@@ -1428,7 +1428,7 @@ onMounted(() => {
 
       <!-- RIGHT -->
       <!-- RIGHT -->
-      <div class="sticky top-8">
+      <div class="sticky top-8 mx-8">
         <div class="text-xl font-bold mb-8">Position Summary</div>
 
         <!-- PAIR -->

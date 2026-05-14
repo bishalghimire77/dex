@@ -78,7 +78,7 @@ onMounted(async () => {
 
           <!-- TEXT -->
           <div class="text-md font-extrabold tracking-tight text-white">
-            InoDex
+            InoSwap
           </div>
         </NuxtLink>
 
@@ -220,7 +220,7 @@ onMounted(async () => {
 
         <!-- EARN -->
         <NuxtLink
-          to="/liquidity"
+          to="/pools"
           @click="mobileMenu = false"
           class="text-left text-[16px] font-medium"
           :class="isActive('/liquidity') ? 'text-cyan-400' : 'text-white/65'"
