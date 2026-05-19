@@ -1442,7 +1442,7 @@ onMounted(() => {
         <div class="text-md font-bold mb-8">Position Summary</div>
 
         <!-- PAIR -->
-        <div class="flex items-center justify-between mb-10">
+        <div class="flex flex-col gap-2 items-start justify-start mb-10">
           <div class="flex items-center gap-4">
             <div class="flex -space-x-3">
               <template v-if="selectedToken0">
@@ -1465,8 +1465,11 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="text-sm font-bold">
-            {{ summaryAPR }}
+          <div class="flex justify-between text-xs text-xs  w-[100%]">
+            <span class = "flex justify-between w-[100%]">
+              <p class="text-gray-400">Est Apr</p>
+            <p class = "font-bold">{{ summaryAPR }}</p>
+            </span>
           </div>
         </div>
 
