@@ -67,10 +67,7 @@ const coins = [
   },
 ];
 
-
-const {earnTok} = earnTokens();
-
-
+const { earnTok } = earnTokens();
 
 const trendingFilters = [
   "All",
@@ -146,7 +143,7 @@ const trending = [
   },
 ];
 onMounted(() => {
-  console.log("earn token is ", earnTok)
+  console.log("earn token is ", earnTok);
 });
 </script>
 
@@ -232,12 +229,14 @@ onMounted(() => {
             </div>
           </NuxtLink>
 
-          <div class="flex items-center gap-2 hover:text-cyan-400">
-            <div class="flex items-center justify-center w-6 h-6 rounded-xl">
-              <BaggageClaim />
+          <NuxtLink to="/portfolio">
+            <div class="flex items-center gap-2 hover:text-cyan-400">
+              <div class="flex items-center justify-center w-6 h-6 rounded-xl">
+                <BaggageClaim />
+              </div>
+              <span class="text-sm font-semibold">Claim</span>
             </div>
-            <span class="text-sm font-semibold">Claim</span>
-          </div>
+          </NuxtLink>
         </div>
       </div>
 
@@ -335,9 +334,7 @@ onMounted(() => {
             <NuxtLink
               :to="`/pools/${token.name}`"
               v-for="token in earnTok"
-              @click="
-                currentPool = token
-              "
+              @click="currentPool = token"
               :key="token.name"
             >
               <div

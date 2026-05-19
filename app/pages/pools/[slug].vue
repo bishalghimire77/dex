@@ -514,9 +514,10 @@ onMounted(() => {
                         v-for="tx in filteredTransactions"
                         :key="tx.time"
                         :to="`https://explorer.cronos.org/tx/${tx.hash}`"
+                        class=""
                       >
                         <div
-                          class="grid md:grid-cols-5 gap-4 items-center border-b border-white/5 pb-5 text-xs"
+                          class="grid md:grid-cols-5 gap-4 items-center border-b border-white/5 pb-5 text-xs "
                         >
                           <div>{{ tx.from }}</div>
                           <div>{{ tx.type }}</div>
