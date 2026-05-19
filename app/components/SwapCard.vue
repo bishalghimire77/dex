@@ -43,12 +43,14 @@ const sellToken = ref(
   selectedToken.value || {
     name: "PAWSFLOW",
     icon: null,
+    address:'0x5566778899AABBCCDDEEFF001122334455667788'
   }
 );
 
 const buyToken = ref({
   name: "CRO",
   icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s",
+  address: '0x99887766554433221100FFEEDDCCBBAA11223344'
 });
 
 const swap = async () => {
@@ -248,6 +250,9 @@ onMounted(() => {});
             @click="showTokenDetails(sellToken)"
             :title="sellToken.name"
             :icon="sellToken.icon"
+            :address="sellToken.address"
+
+
             price="$0.06972"
             change="-1.18%"
           />
@@ -256,6 +261,7 @@ onMounted(() => {});
             @click="showTokenDetails(buyToken)"
             :title="buyToken.name"
             :icon="buyToken.icon"
+            address="buyToken.address"
             price="$0.05126"
             change="-1.27%"
           />

@@ -129,7 +129,7 @@ onMounted(() => {
       <!-- OVERVIEW -->
       <div v-if="mainTab === 'overview'" class="overview-grid">
         <!-- LEFT -->
-        <div class="panel">
+        <div class="border border-white/10 rounded-xl">
           <!-- WALLET CARD -->
           <div class="wallet-card">
             <div class="wallet-blur"></div>
@@ -435,7 +435,7 @@ onMounted(() => {
 
 .panel {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 30px;
+  /* border-radius: 30px; */
   background: rgba(11, 19, 32, 0.7);
   overflow: hidden;
   backdrop-filter: blur(16px);

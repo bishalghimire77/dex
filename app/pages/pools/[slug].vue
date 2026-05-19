@@ -40,8 +40,8 @@ const { pools } = usePools();
    FIND CURRENT ITEM
 ========================= */
 
-const activeVersion = ref(currentPool.value?.version || "V3");
-const activeFee = ref(currentPool.value.feeTier);
+const activeVersion = ref(currentPool?.value?.version || "V3");
+const activeFee = ref(currentPool?.value?.feeTier);
 
 const currentPoolItem = computed(() => {
   const selectedPool = pools.find(
@@ -104,7 +104,7 @@ const activeTx = ref("All");
    FILTER OPTIONS
 ========================= */
 
-const versions = ref(currentPool.value.versions);
+const versions = ref(currentPool?.value?.versions);
 
 // const feeOptions = currentPool.value.feeTiersByVersion[currentPool.value.version];
 const feeOptions = computed(() => {
@@ -256,7 +256,7 @@ const chartOptions = computed(() => ({
    TRANSACTIONS
 ========================= */
 
-const transactions = currentPoolItem.value.transactions;
+const transactions = currentPoolItem?.value?.transactions;
 
 const filteredTransactions = computed(() => {
   if (activeTx.value === "All") {
@@ -346,8 +346,11 @@ onMounted(() => {
           </div>
 
           <div>
-            <div v-if="activeTab == 'overview'" class = "flex justify-between gap-2 flex-wrap">
-              <div class = "flex gap-2 flex-wrap">
+            <div
+              v-if="activeTab == 'overview'"
+              class="flex justify-between gap-2 flex-wrap"
+            >
+              <div class="flex gap-2 flex-wrap">
                 <!-- FILTERS -->
                 <div class="flex gap-2 flex-wrap">
                   <!-- VERSIONS -->
@@ -497,23 +500,27 @@ onMounted(() => {
                       >
                         <div>From</div>
                         <div>Type</div>
-                        <div>{{ currentPoolItem.token0.name }}</div>
-                        <div>{{ currentPoolItem.token1.name }}</div>
+                        <div>{{ currentPoolItem?.token0?.name }}</div>
+                        <div>{{ currentPoolItem?.token1?.name }}</div>
                         <div>Time</div>
                       </div>
 
                       <!-- ROWS -->
-                      <div
+                      <NuxtLink
                         v-for="tx in filteredTransactions"
                         :key="tx.time"
-                        class="grid md:grid-cols-5 gap-4 items-center border-b border-white/5 pb-5 text-xs"
+                        :to="`https://explorer.cronos.org/tx/${tx.hash}`"
                       >
-                        <div>{{ tx.from }}</div>
-                        <div>{{ tx.type }}</div>
-                        <div>{{ tx.wcro }}</div>
-                        <div>{{ tx.vies }}</div>
-                        <div>{{ tx.time }}</div>
-                      </div>
+                        <div
+                          class="grid md:grid-cols-5 gap-4 items-center border-b border-white/5 pb-5 text-xs"
+                        >
+                          <div>{{ tx.from }}</div>
+                          <div>{{ tx.type }}</div>
+                          <div>{{ tx.wcro }}</div>
+                          <div>{{ tx.vies }}</div>
+                          <div>{{ tx.time }}</div>
+                        </div>
+                      </NuxtLink>
                     </div>
                   </div>
                 </div>
@@ -527,7 +534,7 @@ onMounted(() => {
                     <div class="text-gray-400 text-xs">Pool Liquidity</div>
 
                     <div class="text-sm font-bold mb-6">
-                      {{ currentPoolItem.volume }}
+                      {{ currentPoolItem?.volume }}
                     </div>
 
                     <div class="flex justify-between">
@@ -535,23 +542,23 @@ onMounted(() => {
                         class="flex justify-start gap-1 items-center text-xs mb-3"
                       >
                         <img
-                          :src="currentPoolItem.icons[0]"
+                          :src="currentPoolItem?.icons[0]"
                           alt=""
                           srcset=""
                           class="h-4 w-4"
                         />
-                        <span>{{ currentPoolItem.token0.name }}</span>
+                        <span>{{ currentPoolItem?.token0?.name }}</span>
                       </div>
                       <div
                         class="flex justify-start gap-1 items-center text-xs mb-3"
                       >
                         <img
-                          :src="currentPoolItem.icons[1]"
+                          :src="currentPoolItem?.icons[1]"
                           alt=""
                           srcset=""
                           class="h-4 w-4"
                         />
-                        <span>{{ currentPoolItem.token1.name }}</span>
+                        <span>{{ currentPoolItem?.token1?.name }}</span>
                       </div>
                     </div>
 
@@ -563,13 +570,13 @@ onMounted(() => {
 
                     <div class="flex justify-between text-xs">
                       <div>
-                        <div>{{ currentPoolItem.token0.total }}</div>
+                        <div>{{ currentPoolItem?.token0?.total }}</div>
 
                         <div class="text-gray-400">$101.75</div>
                       </div>
 
                       <div class="text-right">
-                        <div>{{ currentPoolItem.token1.total }}</div>
+                        <div>{{ currentPoolItem?.token1?.total }}</div>
 
                         <div class="text-gray-400">$326.23</div>
                       </div>
@@ -583,7 +590,7 @@ onMounted(() => {
                     <div class="text-gray-400 text-xs mb-2">APR</div>
 
                     <div class="text-sm font-bold">
-                      {{ currentPoolItem.apr }}
+                      {{ currentPoolItem?.apr }}
                     </div>
                   </div>
 
@@ -602,7 +609,7 @@ onMounted(() => {
                       <!-- RIGHT -->
                       <div class="flex items-center gap-4">
                         <span class="text-xs font-medium text-white/90">
-                          {{ formatAddress(currentPoolItem.poolAddress) }}
+                          {{ formatAddress(currentPoolItem?.poolAddress) }}
                         </span>
 
                         <!-- COPY -->
@@ -649,19 +656,19 @@ onMounted(() => {
                       <!-- LEFT -->
                       <div class="flex items-center gap-1">
                         <img
-                          :src="currentPoolItem.icons[0]"
+                          :src="currentPoolItem?.icons[0]"
                           class="w-4 h-4 rounded-full"
                         />
 
                         <span class="text-xs font-bold text-white">
-                          {{ currentPoolItem.token0.name }}
+                          {{ currentPoolItem?.token0?.name }}
                         </span>
                       </div>
 
                       <!-- RIGHT -->
                       <div class="flex items-center gap-4">
                         <span class="text-xs font-medium text-white/90">
-                          {{ formatAddress(currentPoolItem.addressToken0) }}
+                          {{ formatAddress(currentPoolItem?.addressToken0) }}
                         </span>
 
                         <!-- COPY -->
@@ -710,19 +717,19 @@ onMounted(() => {
                       <!-- LEFT -->
                       <div class="flex items-center gap-1">
                         <img
-                          :src="currentPoolItem.icons[1]"
+                          :src="currentPoolItem?.icons[1]"
                           class="w-4 h-4 rounded-full"
                         />
 
                         <span class="text-xs font-bold text-white">
-                          {{ currentPoolItem.token1.name }}
+                          {{ currentPoolItem?.token1?.name }}
                         </span>
                       </div>
 
                       <!-- RIGHT -->
                       <div class="flex items-center gap-4">
                         <span class="text-xs font-medium text-white/90">
-                          {{ formatAddress(currentPoolItem.addressToken1) }}
+                          {{ formatAddress(currentPoolItem?.addressToken1) }}
                         </span>
 
                         <!-- COPY -->
@@ -769,8 +776,8 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-            <div v-if="activeTab == 'position'">
-              <MyPosition/>
+            <div class="md:w-[80rem]" v-if="activeTab == 'position'">
+              <MyPosition />
             </div>
           </div>
         </div>

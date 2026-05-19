@@ -11,6 +11,7 @@ const tokens = [
   {
     name: "CRO",
     symbol: "CRO Token",
+    address:'0x4F8a1cD9A9dB5D2c9f6B2d7a2fA8c6d3b8f1A234',
     price: "$0.00",
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s",
     p: {
@@ -28,6 +29,7 @@ const tokens = [
     name: "USDT",
     symbol: "Tether USD",
     price: "$0.00",
+    address: "0xCCBBAA99887766554433221100FFEEDDCCBBAA99",
     icon: "https://cryptologos.cc/logos/tether-usdt-logo.png",
     p: {
       "1h": "2",
@@ -43,6 +45,7 @@ const tokens = [
   {
     name: "WBTC",
     symbol: "WBTC Token",
+    address: "0xCCBBAA99887766554433221100FFEEDDCCBBAA99",
     price: "$0.00",
     icon: "https://cryptologos.cc/logos/wrapped-bitcoin-wbtc-logo.png",
     p: {

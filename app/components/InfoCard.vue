@@ -3,7 +3,8 @@ defineProps({
   title: String,
   price: String,
   change: String,
-  icon: String
+  icon: String,
+  address: String
 })
 </script>
 
@@ -31,7 +32,7 @@ defineProps({
         </span>
       </div>
 
-      <span class="text-cyan-400 text-md">↗</span>
+      <a :href="`https://explorer.cronos.org/token/${address}`"><span class="text-cyan-400 text-md">↗</span></a>
     </div>
 
     <!-- Price -->

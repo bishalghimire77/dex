@@ -4,6 +4,10 @@ import { set } from "@nuxt/ui/runtime/utils/index.js";
 const { pools } = usePools();
 const currentPool = useState("currentPool", () => null);
 const expandedPool = ref(null);
+import { earnTokens } from "~/composables/usePools";
+const { earnTok } = earnTokens();
+
+
 
 const selectedVersion = ref("All");
 const selectedToken = ref("All");
@@ -94,7 +98,7 @@ onMounted(() => {
           <div
             v-for="card in 4"
             :key="card"
-            class="bg-[#111827] rounded-2xl p-5 border border-white/5"
+            class="bg-[#111827] rounded-xl p-5 border border-white/5"
           >
             <div class="w-10 h-10 rounded-full bg-cyan-400 mb-4"></div>
 
@@ -138,35 +142,40 @@ onMounted(() => {
         <h2 class="text-xl font-bold mb-8">Tailored for You</h2>
 
         <div class="flex gap-6 overflow-x-auto pb-2 scrollbar-hide">
-          <div
-            v-for="pool in pools.slice(0, 5)"
-            :key="pool.id"
-            class="min-w-[420px] rounded-[28px] bg-[#0e1425]/90 border border-white/5 px-8 py-7 hover:border-cyan-400/30 transition cursor-pointer"
+          <NuxtLink
+            :to="`/pools/${pool.name}`"
+            v-for="pool in earnTok"
+            @click="currentPool = pool"
+            :key="pool.name"
           >
-            <!-- TOP -->
-            <div class="flex items-center gap-3 mb-6">
-              <div class="flex -space-x-2">
-                <img
-                  :src="pool.icons[0]"
-                  class="w-7 h-7 rounded-full border-2 border-[#0b1220]"
-                />
+            <div
+              class="min-w-[420px] rounded-xl bg-[#0e1425]/90 border border-white/5 px-8 py-7 hover:border-cyan-400/30 transition cursor-pointer"
+            >
+              <!-- TOP -->
+              <div class="flex items-center gap-3 mb-6">
+                <div class="flex -space-x-2">
+                  <img
+                    :src="pool.icons[0]"
+                    class="w-7 h-7 rounded-full border-2 border-[#0b1220]"
+                  />
 
-                <img
-                  :src="pool.icons[1]"
-                  class="w-7 h-7 rounded-full border-2 border-[#0b1220]"
-                />
+                  <img
+                    :src="pool.icons[1]"
+                    class="w-7 h-7 rounded-full border-2 border-[#0b1220]"
+                  />
+                </div>
+
+                <div class="text-md font-bold tracking-tight">
+                  {{ pool.name }}
+                </div>
               </div>
 
-              <div class="text-md font-bold tracking-tight">
-                {{ pool.name }}
+              <!-- APR -->
+              <div class="text-[#00E889] text-xs font-bold">
+                Earn {{ pool.apr }} APR
               </div>
             </div>
-
-            <!-- APR -->
-            <div class="text-[#00E889] text-xs font-bold">
-              Earn {{ pool.apr }} APR
-            </div>
-          </div>
+          </NuxtLink>
         </div>
       </div>
 

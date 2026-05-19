@@ -131,7 +131,7 @@
                 </button>
 
                 <a
-                  :href="explorer"
+                  :href="`https://explorer.cronos.org/token/${props.address}`"
                   target="_blank"
                   class="text-white hover:text-cyan-400"
                 >

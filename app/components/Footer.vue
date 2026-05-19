@@ -1,18 +1,16 @@
 <template>
   <footer class="relative mt-24 overflow-hidden">
-    
     <!-- BACKGROUND -->
-    <div
-      class="relative   border-white/10 bg-[#0b1020]"
-    >
-
+    <div class="relative border-white/10 bg-[#0b1020]">
       <!-- GRID -->
       <div
         class="absolute inset-0 opacity-60"
         style="
-          background-image:
-            linear-gradient(rgba(0,140,255,0.12) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,140,255,0.12) 1px, transparent 1px);
+          background-image: linear-gradient(
+              rgba(0, 140, 255, 0.12) 1px,
+              transparent 1px
+            ),
+            linear-gradient(90deg, rgba(0, 140, 255, 0.12) 1px, transparent 1px);
           background-size: 80px 80px;
         "
       />
@@ -36,33 +34,23 @@
       />
 
       <!-- CONTENT -->
-      <div
-        class="relative z-10 px-6 sm:px-10 lg:px-16 py-10 lg:py-14"
-      >
-
+      <div class="relative z-10 px-6 sm:px-10 lg:px-16 py-10 lg:py-14">
         <div
           class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10"
         >
-
           <!-- LEFT -->
           <div>
-
             <!-- TITLE -->
             <h2
               class="text-4xl sm:text-[72px] lg:text-[92px] leading-[0.9] font-black tracking-[-4px]"
             >
-              <span class="text-white">
-                Very, Very,
-              </span>
+              <span class="text-white"> Very, Very, </span>
 
-              <span class="text-cyan-400">
-                Simple
-              </span>
+              <span class="text-cyan-400"> Simple </span>
             </h2>
 
             <!-- CRONOS -->
             <div class="mt-8 flex items-center gap-3">
-              
               <div
                 class="w-12 h-12 rounded-xl border border-white/20 bg-white/5 flex items-center justify-center"
               >
@@ -73,13 +61,9 @@
               </div>
 
               <div>
-                <div class="text-xs text-white/60 font-medium">
-                  Powered by
-                </div>
+                <div class="text-xs text-white/60 font-medium">Powered by</div>
 
-                <div class="text-xl font-black text-white">
-                  cronos
-                </div>
+                <div class="text-xl font-black text-white">cronos</div>
               </div>
             </div>
           </div>
@@ -88,7 +72,6 @@
           <div
             class="flex flex-col items-start lg:items-end justify-between gap-8"
           >
-
             <!-- TEXT -->
             <div
               class="text-white text-lg sm:text-sm font-bold text-left lg:text-right max-w-[420px]"
@@ -97,13 +80,10 @@
             </div>
 
             <!-- SOCIALS -->
-            <div
-              class="flex items-center gap-4 sm:gap-6"
-            >
-
+            <div class="flex items-center gap-4 sm:gap-6">
               <!-- X -->
               <a
-                href="#"
+                href="https://x.com/Ino_C1"
                 class="text-white hover:text-cyan-400 transition-all"
               >
                 <svg
@@ -120,7 +100,7 @@
 
               <!-- DISCORD -->
               <a
-                href="#"
+                href="https://discord.com/invite/wFrHx3tAD8"
                 class="text-white hover:text-cyan-400 transition-all"
               >
                 <svg
@@ -135,21 +115,17 @@
                 </svg>
               </a>
 
-              <!-- TELEGRAM -->
+              <!-- Linkedin -->
               <a
-                href="#"
+                href="linkedin.com/showcase/ino-c1/"
                 class="text-white hover:text-cyan-400 transition-all"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-10 h-10"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M21.944 2.506a1.5 1.5 0 0 0-1.58-.242L2.457 9.17a1.5 1.5 0 0 0 .103 2.823l4.93 1.64 1.64 4.93a1.5 1.5 0 0 0 2.823.103l6.906-17.907a1.5 1.5 0 0 0-.915-1.915ZM9.96 12.626l-.733 3.09-.977-2.936 8.94-6.96-7.23 6.806Z"
-                  />
-                </svg>
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                  class="h-8 w-8"
+                  alt=""
+                  srcset=""
+                />
               </a>
 
               <!-- BUTTON -->
@@ -157,26 +133,19 @@
                 to="/liquidity"
                 class="w-20 h-20 rounded-[24px] bg-cyan-400 text-black flex flex-col items-center justify-center font-black hover:scale-105 transition-all"
               >
-                <div class="text-4xl leading-none">
-                  +
-                </div>
+                <div class="text-4xl leading-none">+</div>
 
-                <div class="text-sm">
-                  Liquidity
-                </div>
+                <div class="text-sm">Liquidity</div>
               </NuxtLink>
-
             </div>
           </div>
         </div>
 
         <!-- BOTTOM -->
-        <div
+        <!-- <div
           class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/50"
         >
-          <div>
-            © {{ new Date().getFullYear() }} InoPlay
-          </div>
+          <div>© {{ new Date().getFullYear() }} InoPlay</div>
 
           <div class="flex flex-wrap items-center gap-5">
             <button
@@ -207,7 +176,7 @@
               Risk Warning
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -216,13 +185,12 @@
       v-model:open="isOpen"
       :ui="{
         body: '!bg-red',
-        content:'bg-[hsl(var(--card))]',
-        overlay:'bg-[hsl(var(--card)/0.8)]',
+        content: 'bg-[hsl(var(--card))]',
+        overlay: 'bg-[hsl(var(--card)/0.8)]',
       }"
     >
       <template #content>
         <div class="p-6 max-w-3xl w-full">
-
           <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-semibold">
               {{ modalTitle }}
@@ -250,39 +218,33 @@
 // import Cookies from "~/components/policies/Cookies.vue";
 // import Disclaimer from "~/components/policies/Disclaimer.vue";
 
-const isOpen = ref(false)
-const currentComponent = shallowRef(null)
-const modalTitle = ref("")
+const isOpen = ref(false);
+const currentComponent = shallowRef(null);
+const modalTitle = ref("");
 
 const open = (type) => {
-
   switch (type) {
-
     case "terms":
-      currentComponent.value = Terms
-      modalTitle.value =
-        "InoPlay Terms and Conditions"
-      break
+      currentComponent.value = Terms;
+      modalTitle.value = "InoPlay Terms and Conditions";
+      break;
 
     case "privacy":
-      currentComponent.value = Privacy
-      modalTitle.value =
-        "InoPlay Privacy Policy"
-      break
+      currentComponent.value = Privacy;
+      modalTitle.value = "InoPlay Privacy Policy";
+      break;
 
     case "cookies":
-      currentComponent.value = Cookies
-      modalTitle.value =
-        "InoPlay Cookie Policy"
-      break
+      currentComponent.value = Cookies;
+      modalTitle.value = "InoPlay Cookie Policy";
+      break;
 
     case "disclaimer":
-      currentComponent.value = Disclaimer
-      modalTitle.value =
-        "InoPlay Disclaimer and Risk Warning"
-      break
+      currentComponent.value = Disclaimer;
+      modalTitle.value = "InoPlay Disclaimer and Risk Warning";
+      break;
   }
 
-  isOpen.value = true
-}
+  isOpen.value = true;
+};
 </script>

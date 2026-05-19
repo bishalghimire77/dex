@@ -7,6 +7,7 @@ const openTokenDrawer = ref(false);
 /* =========================
    SINGLE TOKEN
 ========================= */
+const currentPool = useState("currentPool");
 
 
 
@@ -146,7 +147,7 @@ const feeTiers = [
     id: "0.3%",
     title: "Most pairs",
     tvl: "$1,271.86 TVL",
-    common: true,
+    
   },
   {
     id: "0.05%",
@@ -157,6 +158,7 @@ const feeTiers = [
     id: "1%",
     title: "Volatile pairs",
     tvl: "$603.38 TVL",
+    common: true,
   },
   {
     id: "0.01%",
@@ -321,14 +323,22 @@ const addLiquidity = () => {
 ========================= */
 
 onMounted(() => {
-  const token0 = route.query.token0;
-  const token1 = route.query.token1;
+  console.log("query is", currentPool.value)
+  // const token0 = route.query.token0;
+  // const token1 = route.query.token1;
 
-  const version = route.query.version;
-  const fee = route.query.fee;
+  // const version = route.query.version;
+  // const fee = route.query.fee;
 
-  const icon0 = route.query.icon0;
-  const icon1 = route.query.icon1;
+  // const icon0 = route.query.icon0;
+  // const icon1 = route.query.icon1;
+
+  const token0 = currentPool?.value?.token0?.name
+  const token1 = currentPool?.value?.token1?.name
+  const version = currentPool?.value?.version
+  const fee = currentPool?.value?.feeTier
+  const icon0 = currentPool?.value?.icons[0]
+  const icon1 = currentPool?.value?.icons[1]
 
   if (token0) {
     const found0 = tokenList.find((t) => t.symbol === token0);
@@ -420,19 +430,19 @@ onMounted(() => {
         <!-- ================= STEP 1 ================= -->
         <!-- STEP 1 -->
         <div
-          class="rounded-[28px] border border-white/15 bg-[#0d1325]/95 overflow-hidden"
+          class="rounded-xl border border-white/15 bg-[#0d1325]/95 overflow-hidden"
         >
           <!-- ACTIVE -->
           <div v-if="step === 1" class="p-8 ">
             <h2 class="text-xl font-bold mb-6 mx-4 p-2">Select pair</h2>
 
             <!-- SELECTED PAIR -->
-            <div class="bg-[#2a3044] rounded-3xl p-5 mb-6 mx-4">
+            <div class="bg-[#2a3044] rounded-xl p-5 mb-6 mx-4">
               <div class="grid grid-cols-[1fr_60px_1fr] gap-4">
                 <!-- TOKEN 0 -->
                 <div
                   @click="selectingSide = 'token0'"
-                  class="h-[120px] rounded-2xl bg-[#111629] flex flex-col items-center justify-center relative cursor-pointer border-2"
+                  class="h-[120px] rounded-xl bg-[#111629] flex flex-col items-center justify-center relative cursor-pointer border-2"
                   :class="
                     selectingSide === 'token0'
                       ? 'border-cyan-400'
@@ -475,7 +485,7 @@ onMounted(() => {
                 <!-- TOKEN 1 -->
                 <div
                   @click="selectingSide = 'token1'"
-                  class="h-[120px] rounded-2xl bg-[#111629] flex flex-col items-center justify-center relative cursor-pointer border-2"
+                  class="h-[120px] rounded-xl bg-[#111629] flex flex-col items-center justify-center relative cursor-pointer border-2"
                   :class="
                     selectingSide === 'token1'
                       ? 'border-cyan-400'
@@ -525,7 +535,7 @@ onMounted(() => {
                 v-for="item in tokenList.slice(0, 4)"
                 :key="item.symbol"
                 @click="selectToken(item)"
-                class="rounded-2xl border border-white/10 bg-[#111629] p-5 text-center cursor-pointer hover:border-cyan-400"
+                class="rounded-xl border border-white/10 bg-[#111629] p-5 text-center cursor-pointer hover:border-cyan-400"
               >
                 <img
                   :src="item.icon"
@@ -543,13 +553,13 @@ onMounted(() => {
             </div>
 
             <!-- TABS -->
-            <div class="flex gap-6 text-sm mb-5">
-              <span class="font-bold">All</span>
-              <span class="text-gray-400">Trending</span>
-              <span class="text-gray-400">Holdings</span>
-              <span class="text-gray-400">New</span>
-              <span class="text-gray-400">Meme</span>
-              <span class="text-gray-400">Imported</span>
+            <div class="flex gap-6 text-xs mb-5">
+              <span class="font-bold hover:text-cyan-400 cursor-pointer">All</span>
+              <span class="text-gray-400 hover:text-cyan-400 cursor-pointer">Trending</span>
+              <span class="text-gray-400 hover:text-cyan-400 cursor-pointer">Holdings</span>
+              <span class="text-gray-400 hover:text-cyan-400 cursor-pointer">New</span>
+              <span class="text-gray-400 hover:text-cyan-400 cursor-pointer">Meme</span>
+              <span class="text-gray-400 hover:text-cyan-400 cursor-pointer">Imported</span>
             </div>
 
             <!-- TOKEN LIST -->
@@ -602,9 +612,9 @@ onMounted(() => {
           </div>
 
           <!-- COLLAPSED -->
-          <div v-if="step > 1" class="p-8 flex justify-between items-center">
+          <div v-if="step > 1" class="p-8 py-3 flex justify-between items-center">
             <div>
-              <div class="text-md font-bold mb-2">Select pair</div>
+              <div class="text-sm font-bold mb-1">Select pair</div>
 
               <div class="text-xs text-gray-300">
                 {{ selectedToken0.symbol }} / {{ selectedToken1.symbol }}
@@ -613,7 +623,7 @@ onMounted(() => {
 
             <button
               @click="editStep(1)"
-              class="px-8 py-2 rounded-xl border border-cyan-00 text-cyan-400 text-md font-bold"
+              class="px-4 py-2 rounded-xl border border-cyan-400/50 text-cyan-400 text-xs font-bold hover:scale-[1.04] cursor-pointer"
             >
               Edit
             </button>
@@ -623,7 +633,7 @@ onMounted(() => {
         <!-- ================= STEP 2 ================= -->
         <div
           v-if="step >= 2"
-          class="rounded-[28px] border border-white/15 bg-[#0d1325]/95 overflow-hidden"
+          class="rounded-xl border border-white/15 bg-[#0d1325]/95 overflow-hidden"
         >
           <!-- ACTIVE -->
           <div v-if="step === 2" class="p-8">
@@ -683,9 +693,9 @@ onMounted(() => {
           </div>
 
           <!-- COLLAPSED -->
-          <div v-if="step > 2" class="p-8 flex justify-between items-center">
+          <div v-if="step > 2" class="p-8 py-3 flex justify-between items-center">
             <div>
-              <div class="text-md font-bold mb-2">Select pool type</div>
+              <div class="text-sm font-bold mb-1">Select pool type</div>
 
               <div class="text-xs text-gray-300">
                 {{ selectedPoolType }} - Concentrated Liquidity
@@ -694,7 +704,7 @@ onMounted(() => {
 
             <button
               @click="editStep(2)"
-              class="px-8 py-2 rounded-xl border border-cyan-400 text-cyan-400 text-md font-bold"
+              class="px-4 py-2 rounded-xl border border-cyan-400/50 text-cyan-400 text-xs font-bold hover:scale-[1.04] cursor-pointer"
             >
               Edit
             </button>
@@ -704,7 +714,7 @@ onMounted(() => {
         <!-- ================= STEP 3 ================= -->
         <div
           v-if="step >= 3 && selectedPoolType === 'V3'"
-          class="rounded-[28px] border border-white/15 bg-[#0d1325]/95 overflow-hidden"
+          class="rounded-xl border border-white/15 bg-[#0d1325]/95 overflow-hidden"
         >
           <!-- ACTIVE -->
           <div v-if="step === 3" class="p-8">
@@ -719,10 +729,10 @@ onMounted(() => {
                 v-for="fee in feeTiers"
                 :key="fee.id"
                 @click="selectedFeeTier = fee.id"
-                class="relative rounded-xl border p-6 cursor-pointer transition"
+                class="relative rounded-xl border py-4 p-6 cursor-pointer transition hover:border-cyan-400/50"
                 :class="
                   selectedFeeTier === fee.id
-                    ? 'border-white bg-white/5'
+                    ? 'border-cyan-400/50 bg-white/5'
                     : 'border-white/10'
                 "
               >
@@ -733,15 +743,15 @@ onMounted(() => {
                   Most Common
                 </div>
 
-                <div class="text-xl font-bold mb-2">
+                <div class="text-md font-bold mb-2">
                   {{ fee.id }}
                 </div>
 
-                <div class="text-xs mb-2">
+                <div class="text-xs mb-1">
                   {{ fee.title }}
                 </div>
 
-                <div class="text-md text-gray-400">
+                <div class="text-xs text-gray-400">
                   {{ fee.tvl }}
                 </div>
               </div>
@@ -749,16 +759,16 @@ onMounted(() => {
 
             <button
               @click="nextStep"
-              class="py-2 px-8 rounded-xl bg-cyan-400 text-black text-md font-bold ml-auto flex items-center justify-center"
+              class="py-2 px-8 rounded-xl bg-cyan-400 text-black text-md font-bold ml-auto flex items-center justify-center cursor-pointer hover:scale-[1.04] transition-all"
             >
               Next
             </button>
           </div>
 
           <!-- COLLAPSED -->
-          <div v-if="step > 3" class="p-8 flex justify-between items-center">
+          <div v-if="step > 3" class="p-8 py-3 flex justify-between items-center">
             <div>
-              <div class="text-md font-bold mb-2">Select fee tier</div>
+              <div class="text-sm font-bold mb-1">Select fee tier</div>
 
               <div class="text-xs text-gray-300">
                 {{ selectedFeeTier }}
@@ -767,7 +777,7 @@ onMounted(() => {
 
             <button
               @click="editStep(3)"
-              class="py-2 px-8 rounded-xl border border-cyan-400 text-cyan-400 text-md font-bold"
+              class="py-2 px-4 rounded-xl border border-cyan-400/50 text-cyan-400 text-xs font-bold hover:scale-[1.04] cursor-pointer"
             >
               Edit
             </button>
@@ -778,7 +788,7 @@ onMounted(() => {
         <!-- ================= STEP 4 ================= -->
         <div
           v-if="step >= 4 && selectedPoolType === 'V3'"
-          class="rounded-[32px] border border-white/10 bg-[#0d1224]/95 overflow-hidden"
+          class="rounded-xl border border-white/10 bg-[#0d1224]/95 overflow-hidden"
         >
           <!-- ACTIVE -->
           <div v-if="step === 4" class="p-8">
@@ -803,7 +813,7 @@ onMounted(() => {
 
               <!-- CHART -->
               <div
-                class="relative h-[520px] rounded-2xl overflow-hidden bg-[#122638] border border-white/10"
+                class="relative h-[520px] rounded-xl overflow-hidden bg-[#122638] border border-white/10"
               >
                 <!-- TOP -->
                 <div
@@ -908,7 +918,7 @@ onMounted(() => {
             <!-- MIN MAX -->
             <div class="grid grid-cols-2 gap-6 mb-10">
               <!-- MIN -->
-              <div class="rounded-3xl border border-white/10 p-8">
+              <div class="rounded-xl border border-white/10 p-8">
                 <div class="text-gray-400 text-sm mb-6">Min price</div>
 
                 <div class="flex items-center justify-between">
@@ -934,7 +944,7 @@ onMounted(() => {
               </div>
 
               <!-- MAX -->
-              <div class="rounded-3xl border border-white/10 p-8">
+              <div class="rounded-xl border border-white/10 p-8">
                 <div class="text-gray-400 text-sm mb-6">Max price</div>
 
                 <div class="flex items-center justify-between">
@@ -972,9 +982,9 @@ onMounted(() => {
           </div>
 
           <!-- COLLAPSED -->
-          <div v-if="step > 4" class="p-8 flex justify-between items-center">
+          <div v-if="step > 4" class="p-8 py-3 flex justify-between items-center">
             <div>
-              <div class="text-md font-bold mb-2">Set price range</div>
+              <div class="text-sm font-bold mb-2">Set price range</div>
 
               <div class="text-xs text-gray-300">
                 {{ minPrice }} - {{ maxPrice }} {{ selectedToken0.symbol }}/{{
@@ -985,7 +995,7 @@ onMounted(() => {
 
             <button
               @click="editStep(4)"
-              class="py-2 px-8 rounded-xl border border-cyan-400 text-cyan-400 text-md font-bold"
+              class="py-2 px-4 rounded-xl border border-cyan-400/50 text-cyan-400 text-xs font-bold hover:scale-[1.04] cursor-pointer"
             >
               Edit
             </button>
@@ -1056,7 +1066,7 @@ onMounted(() => {
             <!-- ================= SINGLE TOKEN ON ================= -->
             <template v-if="singleTokenMode">
               <div
-                class="rounded-[30px] border border-cyan-400 overflow-hidden mb-6"
+                class="rounded-xl border border-white/10 overflow-hidden mb-6"
               >
                 <div class="p-8 relative min-h-[220px]">
                   <div class="text-gray-400 text-sm font-bold mb-8">
@@ -1104,7 +1114,7 @@ onMounted(() => {
             <!-- ================= NORMAL V2 ================= -->
             <template v-else>
               <div
-                class="rounded-[30px] border border-white/10 overflow-hidden mb-6 relative"
+                class="rounded-xl border border-white/10 overflow-hidden mb-6 relative"
               >
                 <!-- TOKEN 0 -->
                 <div class="p-8 relative min-h-[220px]">
@@ -1197,7 +1207,7 @@ onMounted(() => {
             </template>
 
             <!-- TOTAL -->
-            <div class="flex justify-between items-center text-xl mb-6">
+            <div class="flex justify-between items-center text-xs mb-6">
               <span>Total deposits</span>
 
               <span class="font-bold">N/A</span>
@@ -1222,7 +1232,7 @@ onMounted(() => {
           <template v-else>
             <div
               v-if="step >= 5"
-              class="rounded-[32px] border border-white/10 bg-[#0d1224]/95 p-8"
+              class="rounded-xl border border-white/10 bg-[#0d1224]/95 p-8"
             >
               <!-- ACTIVE -->
               <div v-if="step === 5">
@@ -1268,7 +1278,7 @@ onMounted(() => {
 
                 <!-- DEPOSIT BOX -->
                 <div
-                  class="rounded-[32px] border border-white/10 overflow-hidden mb-8 relative"
+                  class="rounded-xl border border-white/10 overflow-hidden mb-8 relative"
                 >
                   <!-- TOKEN 0 -->
                   <div class="flex items-center p-8 relative">
@@ -1370,7 +1380,7 @@ onMounted(() => {
                 </div>
 
                 <!-- TOTAL -->
-                <div class="flex justify-between items-center text-md mb-8">
+                <div class="flex justify-between items-center text-xs mb-8">
                   <span> Total deposits </span>
 
                   <span class="font-bold"> ${{ totalDeposits }} </span>
@@ -1402,7 +1412,7 @@ onMounted(() => {
               <!-- COLLAPSED -->
               <div
                 v-if="step > 5"
-                class="p-8 flex justify-between items-center"
+                class="p-8 py-3 flex justify-between items-center"
               >
                 <div>
                   <div class="text-4xl font-bold mb-2">Set amount</div>
@@ -1416,7 +1426,7 @@ onMounted(() => {
 
                 <button
                   @click="editStep(5)"
-                  class="h-16 px-8 rounded-2xl border-2 border-cyan-400 text-cyan-400 text-2xl font-bold"
+                  class="h-16 px-4 rounded-xl border-2 border-cyan-400/50 text-cyan-400 text-xs font-bold cursor-pointer hover:scale-[1.04]"
                 >
                   Edit
                 </button>
@@ -1429,7 +1439,7 @@ onMounted(() => {
       <!-- RIGHT -->
       <!-- RIGHT -->
       <div class="sticky top-8 mx-8">
-        <div class="text-xl font-bold mb-8">Position Summary</div>
+        <div class="text-md font-bold mb-8">Position Summary</div>
 
         <!-- PAIR -->
         <div class="flex items-center justify-between mb-10">
@@ -1450,18 +1460,18 @@ onMounted(() => {
               </template>
             </div>
 
-            <div class="text-md font-bold">
+            <div class="text-sm font-bold">
               {{ pairName }}
             </div>
           </div>
 
-          <div class="text-md font-bold">
+          <div class="text-sm font-bold">
             {{ summaryAPR }}
           </div>
         </div>
 
         <!-- SUMMARY -->
-        <div class="space-y-6 text-md">
+        <div class="space-y-3 text-xs">
           <div class="flex justify-between">
             <span class="text-gray-400">Pool</span>
 
@@ -1472,7 +1482,7 @@ onMounted(() => {
 
           <div class="border-t border-white/10"></div>
 
-          <div class="flex justify-between text-sm">
+          <div class="flex justify-between text-xs">
             <span class="text-gray-400">Fee tier</span>
 
             <span class="font-bold">
@@ -1480,7 +1490,7 @@ onMounted(() => {
             </span>
           </div>
 
-          <div class="flex justify-between text-sm">
+          <div class="flex justify-between text-xs">
             <span class="text-gray-400">Price range</span>
 
             <span class="font-bold text-right">
@@ -1488,15 +1498,17 @@ onMounted(() => {
             </span>
           </div>
 
-          <div class="flex justify-between text-sm">
+          <div class="flex justify-between text-xs">
             <span class="text-gray-400">Deposits</span>
 
-            <span class="font-bold text-right max-w-[260px]">
-              {{ summaryDeposits }}
-            </span>
+            <div class="flex flex-col gap-1 font-bold text-right max-w-[260px]">
+              <!-- {{ summaryDeposits }} -->
+                <span class="flex gap-1 text-xs"><img :src="selectedToken0?.icon" class = "h-4 w-4 rounded-full" alt="" srcset=""><p>{{ token0Amount }}</p></span>
+                <span class="flex gap-1 text-xs"><img :src="selectedToken1?.icon" class = "h-4 w-4 rounded-full" alt=""><p>{{ token1Amount }}</p></span>
+            </div>
           </div>
 
-          <div class="flex justify-between text-sm">
+          <div class="flex justify-between text-xs">
             <span class="text-gray-400">Pool ratio</span>
 
             <span class="font-bold text-right max-w-[260px]">
@@ -1504,7 +1516,7 @@ onMounted(() => {
             </span>
           </div>
 
-          <div class="flex justify-between text-sm">
+          <div class="flex justify-between text-xs">
             <span class="text-gray-400">Share of pool</span>
 
             <span class="font-bold">
@@ -1515,7 +1527,7 @@ onMounted(() => {
 
         <!-- INFO BOX -->
         <div
-          class="mt-10 rounded-3xl bg-gradient-to-r from-cyan-300 to-cyan-100 text-black p-6"
+          class="mt-10 rounded-xl bg-gradient-to-r from-cyan-300 to-cyan-100 text-black p-6"
         >
           <div class="text-md font-bold mb-3">What’s the best price range?</div>
 

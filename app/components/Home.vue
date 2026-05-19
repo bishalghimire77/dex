@@ -6,6 +6,8 @@ import {
   LucideArrowLeftRight,
 } from "lucide-vue-next";
 const selectedToken = useState("selectedToken", () => null);
+const currentPool = useState("currentPool");
+
 const coins = [
   {
     token: "LION",
@@ -65,42 +67,10 @@ const coins = [
   },
 ];
 
-// const earnTokens = [
-//   {
-//     name: "LION",
-//     apr: "315.08%",
-//     type: "liquidity",
-//     icon: "https://cryptologos.cc/logos/crypto-com-coin-cro-logo.png?v=040",
-//   },
-//   {
-//     name: "V3S",
-//     apr: "315.08%",
-//     type: "liquidity",
-//     icon: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=040",
-//   },
-//   {
-//     name: "WCRO",
-//     apr: "198.50%",
-//     type: "liquidity",
-//     icon: "https://cryptologos.cc/logos/cronos-cro-logo.png?v=040",
-//   },
-//   {
-//     name: "VIES",
-//     apr: "198.50%",
-//     type: "liquidity",
-//     icon: "https://cryptologos.cc/logos/vechain-vet-logo.png?v=040",
-//   },
-//   {
-//     name: "xVVS",
-//     apr: "3.87%",
-//     type: "stake",
-//     icon: "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040",
-//   },
-// ];
 
-const { pools } = usePools();
+const {earnTok} = earnTokens();
 
-const earnTokens = pools;
+
 
 const trendingFilters = [
   "All",
@@ -175,6 +145,9 @@ const trending = [
     icon: "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=040",
   },
 ];
+onMounted(() => {
+  console.log("earn token is ", earnTok)
+});
 </script>
 
 <template>
@@ -360,8 +333,11 @@ const trending = [
           <!-- TOKEN LIST -->
           <div class="relative z-10 mt-10 space-y-6">
             <NuxtLink
-              :to="`/pools/${token.items?.[0]?.slug}`"
-              v-for="token in earnTokens"
+              :to="`/pools/${token.name}`"
+              v-for="token in earnTok"
+              @click="
+                currentPool = token
+              "
               :key="token.name"
             >
               <div
