@@ -1,5 +1,7 @@
 <script setup>
 import { isAmountEntered } from "~/utils/helper";
+import { Info, ChevronDown } from "@lucide/vue";
+import { ChevronUp } from "lucide-vue-next";
 
 const token = {
   icon: "/tokens/wcro.png",
@@ -24,6 +26,8 @@ const token = {
   holders: "-",
 };
 
+const swapInfo = ref(false);
+
 const openInsights = ref(false);
 const selectedInsightToken = ref(null);
 
@@ -43,14 +47,14 @@ const sellToken = ref(
   selectedToken.value || {
     name: "PAWSFLOW",
     icon: null,
-    address:'0x5566778899AABBCCDDEEFF001122334455667788'
+    address: "0x5566778899AABBCCDDEEFF001122334455667788",
   }
 );
 
 const buyToken = ref({
   name: "CRO",
   icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA9YKr4syBOjEY2jQ9fhTHtD46r3EpDspGyg&s",
-  address: '0x99887766554433221100FFEEDDCCBBAA11223344'
+  address: "0x99887766554433221100FFEEDDCCBBAA11223344",
 });
 
 const swap = async () => {
@@ -234,14 +238,132 @@ onMounted(() => {});
 
         <!-- PRICE -->
         <div
-          class="mt-3 text-sm text-gray-400 flex justify-between border border-cyan-400/30 rounded-xl p-3"
+          class="border border-cyan-400/30 rounded-xl p-3 mt-4 transition-all"
         >
-          <span>1 {{ sellToken.name }} ≈ 0.00031 {{ buyToken.name }}</span>
-          <span
-            @click="chartOpen = !chartOpen"
-            class="border border-cyan-400 rounded-xl px-2 py-2 cursor-pointer hover:scale-[1.04]"
-            >Chart</span
-          >
+          <div class=" text-xs text-gray-400 flex items-start justify-between">
+            <span
+              @click="swapInfo = !swapInfo"
+              class="flex justify-center items-center gap-1 cursor-pointer"
+              >1 {{ sellToken.name }} ≈ 0.00031 {{ buyToken.name }}
+              <ChevronUp v-if="swapInfo" :size="16" :stroke-width="1" />
+              <ChevronDown v-else :size="16" :stroke-width="1" />
+            </span>
+
+            <span
+              @click="chartOpen = !chartOpen"
+              class="border border-cyan-400 rounded-xl px-2 py-1 cursor-pointer hover:scale-[1.04] mb-4"
+              >Chart</span
+            >
+          </div>
+
+          <div v-if="swapInfo" class="flex flex-col gap-1">
+            <span class="flex justify-between px-2 text-xs">
+              <p class="flex items-center gap-1">
+                Price Impact
+                <UTooltip
+                  :ui="{
+                    content:
+                      'bg-[#111827] text-white border border-cyan-400/30 rounded-xl px-3 py-2 text-xs max-w-[240px] whitespace-normal leading-5 h-[100%]',
+                  }"
+                >
+                  <Info
+                    :size="16"
+                    :stroke-width="0.8"
+                    class="cursor-pointer text-white/60 hover:text-cyan-400 transition-all"
+                  />
+
+                  <template #content>
+                    <p>
+                      AMM: The difference between the market price and estimated
+                      price due to trade size. MM: No slippage against quote
+                      from market maker.
+                    </p>
+                  </template>
+                </UTooltip>
+              </p>
+              <p>0.1%</p>
+            </span>
+            <span class="flex justify-between px-2 text-xs">
+              <p class="flex items-center gap-1">
+                Min Received
+
+                <UTooltip
+                  :ui="{
+                    content:
+                      'bg-[#111827] text-white border border-cyan-400/30 rounded-xl px-3 py-2 text-xs max-w-[220px] whitespace-normal leading-5 h-[100%]',
+                  }"
+                >
+                  <Info
+                    :size="16"
+                    :stroke-width="0.8"
+                    class="cursor-pointer text-white/60 hover:text-cyan-400 transition-all"
+                  />
+
+                  <template #content>
+                    <p>
+                      Your transaction will revert if there is a large,
+                      unfavorable price movement before it is confirmed.
+                    </p>
+                  </template>
+                </UTooltip>
+              </p>
+              <p>1 CRO</p>
+            </span>
+            <span class="flex justify-between px-2 text-xs">
+              <p class="flex items-center gap-1">
+                Platform Fee
+
+                <UTooltip
+                  :ui="{
+                    content:
+                      'bg-[#111827] h-[100%] text-white border border-cyan-400/30 rounded-xl px-3 py-2 text-xs max-w-[220px] whitespace-normal leading-5',
+                  }"
+                >
+                  <Info
+                    :size="16"
+                    :stroke-width="0.8"
+                    class="cursor-pointer text-white/60 hover:text-cyan-400 transition-all"
+                  />
+
+                  <template #content>
+                    <p>
+                      Platform fee varies depending on the pool fee tier. You
+                      can check the fee tier by clicking the magnifier icon
+                      under the
+                      <span class="text-cyan-400">Route</span> section.
+                    </p>
+                  </template>
+                </UTooltip>
+              </p>
+
+              <p>0.01PFFT</p>
+            </span>
+            <span class="flex justify-between px-2 text-xs">
+              <p class="flex items-center gap-1">
+                Route
+
+                <UTooltip
+                  :ui="{
+                    content:
+                      'bg-[#111827] text-white border border-cyan-400/30 rounded-xl px-3 py-2 text-xs max-w-[240px] whitespace-normal leading-5 h-[100%]',
+                  }"
+                >
+                  <Info
+                    :size="16"
+                    :stroke-width="0.8"
+                    class="cursor-pointer text-white/60 hover:text-cyan-400 transition-all"
+                  />
+                  <template #content>
+                    <p>
+                      Route is automatically calculated based on your routing
+                      preference to achieve the best price for your trade.
+                    </p>
+                  </template></UTooltip
+                >
+              </p>
+              <p>CRO>USDC</p>
+            </span>
+          </div>
         </div>
 
         <!-- INFO CARDS -->
@@ -251,8 +373,6 @@ onMounted(() => {});
             :title="sellToken.name"
             :icon="sellToken.icon"
             :address="sellToken.address"
-
-
             price="$0.06972"
             change="-1.18%"
           />

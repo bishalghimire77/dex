@@ -292,29 +292,54 @@ onMounted(() => {
       <!-- TOP -->
       <div class="flex flex-col lg:flex-row justify-between gap-10 mb-10">
         <!-- LEFT -->
-        <div>
+        <div >
           <!-- TITLE -->
-          <div class="flex items-center gap-2 mb-5">
-            <div class="flex -space-x-2">
-              <img
-                :src="poolIcon[0]"
-                class="w-8 h-8 rounded-full border-2 border-[#09111f]"
-              />
+          <div class = "flex justify-between">
+            <div class="flex items-center gap-2 mb-5">
+              <div class="flex -space-x-2">
+                <img
+                  :src="poolIcon[0]"
+                  class="w-8 h-8 rounded-full border-2 border-[#09111f]"
+                />
 
-              <img
-                :src="poolIcon[1]"
-                class="w-8 h-8 rounded-full border-2 border-[#09111f]"
-              />
-            </div>
-
-            <div>
-              <h1 class="text-md font-bold uppercase">
-                {{ poolName }}
-              </h1>
-
-              <div class="text-cyan-400 text-xs mt-1">
-                {{ currentPoolItem?.version }}
+                <img
+                  :src="poolIcon[1]"
+                  class="w-8 h-8 rounded-full border-2 border-[#09111f]"
+                />
               </div>
+
+              <div>
+                <h1 class="text-md font-bold uppercase">
+                  {{ poolName }}
+                </h1>
+
+                <div class="text-cyan-400 text-xs mt-1">
+                  {{ currentPoolItem?.version }}
+                </div>
+              </div>
+            </div>
+            <div>
+              <!-- RIGHT -->
+              <NuxtLink
+                :to="{
+                  path: '/liquidity',
+                  query: {
+                    token0: currentPool?.name?.split('-')[0],
+                    token1: currentPool?.name?.split('-')[1],
+                    version: currentPoolItem?.version?.split('·')[0]?.trim(),
+                    fee: currentPoolItem?.version?.split('·')[1]?.trim(),
+                    icon0: currentPool?.icons?.[0],
+                    icon1: currentPool?.icons?.[1],
+                  },
+                }"
+                class="cursor-pointer"
+              >
+                <button
+                  class="bg-cyan-400 hover:bg-cyan-300 transition text-black px-5 py-3 rounded-2xl font-bold text-md cursor-pointer hover:scale-[1.02]"
+                >
+                  + Add Liquidity
+                </button>
+              </NuxtLink>
             </div>
           </div>
 
@@ -385,27 +410,6 @@ onMounted(() => {
                 </div>
               </div>
 
-              <!-- RIGHT -->
-              <NuxtLink
-                :to="{
-                  path: '/liquidity',
-                  query: {
-                    token0: currentPool?.name?.split('-')[0],
-                    token1: currentPool?.name?.split('-')[1],
-                    version: currentPoolItem?.version?.split('·')[0]?.trim(),
-                    fee: currentPoolItem?.version?.split('·')[1]?.trim(),
-                    icon0: currentPool?.icons?.[0],
-                    icon1: currentPool?.icons?.[1],
-                  },
-                }"
-                class="cursor-pointer"
-              >
-                <button
-                  class="bg-cyan-400 hover:bg-cyan-300 transition text-black px-5 py-3 rounded-2xl font-bold text-md cursor-pointer hover:scale-[1.02]"
-                >
-                  + Add Liquidity
-                </button>
-              </NuxtLink>
               <!-- MAIN -->
               <div class="grid grid-cols-1 xl:grid-cols-[1fr_370px] gap-10">
                 <!-- LEFT -->
@@ -691,24 +695,27 @@ onMounted(() => {
                         </button>
 
                         <!-- EXTERNAL -->
-                        <button
-                          class="text-white/90 hover:text-cyan-400 transition-all cursor-pointer"
+                        <a
+                          :href="`https://explorer.cronos.org/token/${currentPoolItem?.addressToken0}`"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="w-3 h-3"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
+                          <button
+                            class="text-white/90 hover:text-cyan-400 transition-all cursor-pointer"
                           >
-                            <path
-                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                            />
-                            <polyline points="15 3 21 3 21 9" />
-                            <line x1="10" y1="14" x2="21" y2="3" />
-                          </svg>
-                        </button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="w-3 h-3"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path
+                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                              />
+                              <polyline points="15 3 21 3 21 9" />
+                              <line x1="10" y1="14" x2="21" y2="3" />
+                            </svg></button
+                        ></a>
                       </div>
                     </div>
 
@@ -752,24 +759,27 @@ onMounted(() => {
                         </button>
 
                         <!-- EXTERNAL -->
-                        <button
-                          class="text-white/90 hover:text-cyan-400 transition-all cursor-pointer"
+                        <a
+                          :href="`https://explorer.cronos.org/token/${currentPoolItem?.addressToken1}`"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="w-3 h-3"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
+                          <button
+                            class="text-white/90 hover:text-cyan-400 transition-all cursor-pointer"
                           >
-                            <path
-                              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                            />
-                            <polyline points="15 3 21 3 21 9" />
-                            <line x1="10" y1="14" x2="21" y2="3" />
-                          </svg>
-                        </button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="w-3 h-3"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path
+                                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                              />
+                              <polyline points="15 3 21 3 21 9" />
+                              <line x1="10" y1="14" x2="21" y2="3" />
+                            </svg></button
+                        ></a>
                       </div>
                     </div>
                   </div>

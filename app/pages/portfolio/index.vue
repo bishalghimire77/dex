@@ -87,7 +87,7 @@ onMounted(() => {
               <button @click="copy(address)" class="icon-btn cyan cursor-pointer hover:scale-[1.2] transition-all">⧉</button>
             </UTooltip>
 
-            <button class="icon-btn cyan cursor-pointer">↗</button>
+            <a :href="`https://explorer.cronos.org/address/${address}`"><button class="icon-btn cyan cursor-pointer">↗</button></a>
           </div>
         </div>
 
