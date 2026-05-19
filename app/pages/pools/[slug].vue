@@ -517,7 +517,7 @@ onMounted(() => {
                         class=""
                       >
                         <div
-                          class="grid md:grid-cols-5 gap-4 items-center border-b border-white/5 pb-5 text-xs "
+                          class="grid md:grid-cols-5 gap-4 p-4 items-center border-b border-white/5 pb-5 text-xs hover:bg-white/10"
                         >
                           <div>{{ tx.from }}</div>
                           <div>{{ tx.type }}</div>
